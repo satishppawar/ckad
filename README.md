@@ -27,4 +27,44 @@
  ```
 
  * `--cni=calico` is networking plugin
- 
+
+```sh
+  minikube status
+```
+
+* minikube log in to host
+```sh
+minikube ssh
+```
+
+
+```
+ kubectl get all
+```
+
+```sh
+ docker ps
+ ```
+
+-----------
+### minikube dashboard
+
+* GUI based interactive app to use minikube
+```sh
+minikube dashboard
+```
+
+*NOTE* Do not use GUI instead use `kubectl`
+
+--------------------
+
+### Kubenetes Create Deployment
+
+```bash
+kubectl create deploy firtnginx --image=nginx --replicas=3
+```
+
+* test
+```kubectl get all ```
+
+
