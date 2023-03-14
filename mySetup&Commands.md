@@ -1,3 +1,10 @@
+# installation GUI WSL
+
+https://www.youtube.com/watch?v=IL7Jd9rjgrM
+
+
+
+
 sudo apt-get update
 sudo apt full-upgrade
 sudo apt install x11-apps
