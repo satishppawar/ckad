@@ -288,5 +288,23 @@ status: {}
 - Ambassador Container - a container that represent the primary container to the outside world, such as proxy
 - Adapter container - Used to adopt the traffic or data pattern to match the traffic or data pattern in other application cluster
 
-- **NOTE:** Sidecard containers etc., are not defined using specific pod properties from a kubernetes  API resource & it's multi-container pod
+- **NOTE:** Sidecar containers etc., are not defined using specific pod properties from a kubernetes  API resource & it's multi-container pod
+
+##### Sidecar container in Depth
+
+- A sidecar container is providing additional functionality to the main primary container,  where it makes no sense running this functionality in a separate pod.
+- Think of logging, monitoring, and syncing use cases.
+- The essence is that main container and the sidecar Container have access to shared resources (eg. shared volume)to Exchange information.
+- Istio service mesh injects sidecar Container in pods to enable Traffic management.
+
+###### Demo for Sidecar container
+- Use [sidecar container example](../sidecar.yaml)
+- Run ` kubectl apply -f sidecar.yaml`
+- Get pods and run side card container
+`kubectl exec -it sidecar-pod -c sidecar -- /bin/bash`
+- Inside container run ` yum install -y curl`
+- Run `
+
+---
+
 
