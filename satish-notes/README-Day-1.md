@@ -283,5 +283,10 @@ status: {}
 
 ### Multi-Container Pod
 
+#### Use cases for multiple container
+- Sidecar container - it enhance the primary container, for logging, service mesh etc
+- Ambassador Container - a container that represent the primary container to the outside world, such as proxy
+- Adapter container - Used to adopt the traffic or data pattern to match the traffic or data pattern in other application cluster
 
+- **NOTE:** Sidecard containers etc., are not defined using specific pod properties from a kubernetes  API resource & it's multi-container pod
 
