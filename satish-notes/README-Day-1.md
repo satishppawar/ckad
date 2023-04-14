@@ -303,7 +303,46 @@ status: {}
 - Get pods and run side card container
 `kubectl exec -it sidecar-pod -c sidecar -- /bin/bash`
 - Inside container run ` yum install -y curl`
-- Run `
+- Run ` curl http://localhost/date.txt`
+
+##### Init Container
+
+- An init container, is an additional container in a pod that completes a task before regular container is started. Task can be downloading dependencies or configuring essential things.
+
+- The regular container will only be started once the init container has been started.
+
+- If the init container has not run to completion state, the main container is not started.
+
+- check [init-example1.yaml](../init-example1.yaml) and  [init-example2.yaml](../init-example2.yaml)
+
+```
+kubectl create -f init-example1.yaml
+kubectl get pods
+kubectl create -f init-example2.yaml
+kubectl get pods
+```
+
+----
+### Namespaces
+
+- Namespaces can be used to apply strict separation between resources.
+- `kube-system` namespace is used for k8s resources
+- `default` is used for user resources
+- operators are typically create their own namespaces
+- Use dedicated namespace while deploying applications
+
+- Namespaces can be used to apply different security-related settings such as RBAC (Role-Based Access Control), network policy, quota,
+
+- use `kubectl describe ns`
+
+#### using namespaces
+
+- Create namespaces --> `kubectl create namespace mynamespace`
+- Using namespace --> `kubectl COMMAND -n mynamespace`
+- Get resources --> `kubectl get COMMAND -all-namespaces`
+- Set the current namespace --> `kubectl config set-context --current --namespace=my-namespace` 
+
+
 
 ---
 

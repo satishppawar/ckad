@@ -38,3 +38,12 @@ docker ps
 minikube dashboard
 kubectl create deploy firtnginx --image=nginx --replicas=3
 kubectl get all
+
+---
+
+#### using namespaces
+
+- Create namespaces --> `kubectl create namespace mynamespace`
+- Using namespace --> `kubectl COMMAND -n mynamespace`
+- Get resources --> `kubectl get COMMAND -all-namespaces`
+- Set the current namespace --> `kubectl config set-context --current --namespace=my-namespace`
