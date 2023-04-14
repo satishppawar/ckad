@@ -94,8 +94,9 @@ OR
 `kubectl config view`
 
 - Config file consists of
-> users - details for login to cluster
-> context - Current working env
+> users - details for login to cluster. i.e client-certificate and client-key
+> clusters - details of the cluster
+> contexts - Current working env having details such as namespace,
 
 - Setting Context
 
@@ -127,7 +128,7 @@ kubectl create deploy firtnginx --image=nginx --replicas=3
 ```kubectl get all ```
 ---
 
-## Understanding Containerfile
+### Understanding Containerfile
 
 - Containerfile (Dockerfile) used to build the container images
 
@@ -167,4 +168,120 @@ docker save centmap -o centmap.tar
 - You use tube kubectl command --help documentation, including examples.
 
 - Use  `source<(kubectl completion bash)` to make working with kubectl easier
+
+- Use ` kubectl explain pod`
+---
+
+#### Pod vs Deployment
+
+- Standalone pods are not rescheduled in case of events such as node failure. However, if pod is deployed using deployment then pod is recreated in case of accidental termination.
+
+---
+## YAML Basics
+
+- YAML is human-readable data-serializable language
+- Uses indentation to identify the relations
+
+- K8s yaml
+> apiVersion
+> kind
+> metadata
+> spec
+
+- Use `kubectl explain` to get more information
+---
+
+### Generating Yaml
+
+- To generate yaml, `--dry-run=client -o yaml >my.yaml` as an argument to the kubectl run and kubectl create commands
+> eg.  kubectl run nginxx --image=nginx --dry-run=client -o yaml>my.yaml
+> kubectl run nginxx --image=nginx --dry-run=client -o yaml
+
+- Check my.yaml file
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginxx
+  name: nginxx
+spec:
+  containers:
+  - image: nginx
+    name: nginxx
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  activeDeadlineSeconds: 30
+status: {}
+```
+
+- Use explain command and spec to `activeDeadlineSeconds`
+> kubectl explain pod.spec
+
+- Yaml file will be like
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginxx
+  name: nginxx
+spec:
+  containers:
+  - image: nginx
+    name: nginxx
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  activeDeadlineSeconds: 25
+status: {}
+```
+### Kubectl create vs apply
+
+- Create --> Used to create a resource from YAML
+- Apply (update existing once Or create new if not present ) --> create a resource if does not exist yet and modify it if it already exists & has been created with `kubectl apply` earlier
+
+---
+
+## Exercise
+
+- Create a YAML file to run the nginx container.Find the Appropriate option to set The priority of container. Hint use `kubectl explain`, and next run the yaml file to create a resource
+
+### Solution
+- run ` kubectl run nginxx-exe-1 --image=nginx --dry-run=client -o yaml > exe-1.yaml`
+- `cat  exe-1.yaml` and priority value in spec
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginxx-exe-1
+  name: nginxx-exe-1
+spec:
+  containers:
+  - image: nginx
+    name: nginxx-exe-1
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  priority: 0
+status: {}
+```
+
+- create a pod using `kubectl apply -f exe-1.yaml`
+
+### Learning --> Priority Class
+
+----
+
+### Multi-Container Pod
+
+
 
