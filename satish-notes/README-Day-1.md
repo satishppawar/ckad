@@ -2,6 +2,7 @@
 
 1. KCNA - Entry Level
 2. CKAD - Basic (Easy)
+> Pre Linux Basic Fundamental
 3. CKA - Intermediate
 4. CKS - Security
 
@@ -340,10 +341,36 @@ kubectl get pods
 - Create namespaces --> `kubectl create namespace mynamespace`
 - Using namespace --> `kubectl COMMAND -n mynamespace`
 - Get resources --> `kubectl get COMMAND -all-namespaces`
-- Set the current namespace --> `kubectl config set-context --current --namespace=my-namespace` 
-
-
-
+- Set the current namespace --> `kubectl config set-context --current --namespace=my-namespace`
 ---
 
+## Understanding Security Context
 
+- SecurityContext defines a privilege And access control settings for a pod Or container.And includes following.
+
+1. Discretionary access control which is about permission used to access object.
+2. Security enhanced Linux, layer security levels can be applied.
+3. Running as privileged or unprivileged user.
+4. Using Linux capabilities.
+5. AppArmor which is alternative to SELinux
+6. AllowPrivilegeEscalation, which controls if a process Can contain more privilege than its parent process
+
+- Use `kubectl explain pod.spec.securityContext | less`
+
+### Demo SecurityContext
+
+- use [securitycontextdemo2](../securitycontextdemo2.yaml)
+
+```
+kubectl apply -f securitycontextdemo2.yaml
+kubectl exec security-context-demo -it -- sh
+```
+
+- use [securitycontextdemo.yaml](../securitycontextdemo.yaml)
+
+----
+
+## Managing Jobs
+
+- Pods are normally created to run forever
+- 

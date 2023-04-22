@@ -3,8 +3,6 @@
 https://www.youtube.com/watch?v=IL7Jd9rjgrM
 
 
-
-
 sudo apt-get update
 sudo apt full-upgrade
 sudo apt install x11-apps
@@ -47,3 +45,19 @@ kubectl get all
 - Using namespace --> `kubectl COMMAND -n mynamespace`
 - Get resources --> `kubectl get COMMAND -all-namespaces`
 - Set the current namespace --> `kubectl config set-context --current --namespace=my-namespace`
+
+----
+
+### Kubectl Describe
+
+----
+### Troubleshoot
+
+- kubectl run -h | less
+
+### minikube Env Troubleshoot
+
+-  minikube ssh
+- crictl images
+
+
