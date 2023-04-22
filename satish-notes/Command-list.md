@@ -1,3 +1,4 @@
+# kubectl explain
 - kubectl explain --> `kubectl explain pod`
 - kubectl explain pod.spec
 
