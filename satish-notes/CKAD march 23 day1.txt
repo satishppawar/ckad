@@ -1,0 +1,154 @@
+student@student-virtual-machine:~/ckad$ history
+    1  history
+    2  minikube start --vm-driver=docker --cni=calico
+    3  kubectl get all
+    4  history
+    5  minikube status
+    6  minikube ssh
+    7  kubectl get all
+    8  minikube --help | less
+    9  minikube dashboard
+   10  kubectl get all
+   11  kubectl create deploy firstnginx --image=nginx --replicas=3
+   12  kubectl get all
+   13  history
+   14  kubectl -h | less
+   15  kubectl completion -h | less
+   16  source <(kubectl completion bash)
+   17  vim ~/.kube/config 
+   18  kubectl get pods
+   19  kubectl get ns
+   20  kubectl config view
+   21  kubectl config set-context minikube --namespace=kube-system
+   22  kubectl get pods
+   23  kubectl config set-context --current --namespace=default
+   24  ls *file
+   25  cd dockerfile/
+   26  vim Dockerfile 
+   27  docker build -t centmap .
+   28  docker images
+   29  docker save --help
+   30  docker save centmap
+   31  docker save centmap -o centmap.tar
+   32  ls -l centmap.tar 
+   33  history
+   34  kubectl get pods
+   35  kubectl delete pod dontuseme-5dc7b7f996-dph5m 
+   36  kubectl get pods
+   37  kubectl run -h | less
+   38  kubectl run nginxxxx --image=nginx 
+   39  kubectl get pods
+   40  history
+   41  kubectl get pods
+   42  kubectl delete pod nginxxxx 
+   43  kubectl get pods
+   44  kubectl explain pods
+   45  kubectl explain pods.spec | less
+   46  history
+   47  kubectl get pods
+   48  kubectl get pods firstnginx-5444786b89-m48zg -o yaml | less
+   49  kubectl describe pod firstnginx-5444786b89-wh24c | less
+   50  vim ex1.txt
+   51  history
+   52  kubectl describe pod firstnginx-5444786b89-wh24c | less
+   53  kubectl get pods -o wide
+   54  cd
+   55  kubectl run nginxxxx --image=nginx --dry-run=client -o yaml
+   56  kubectl run nginxxxx --image=nginx --dry-run=client -o yaml > nginxxxx.yaml
+   57  vim nginxxxx.yaml 
+   58  kubectl apply -f nginxxxx.yaml 
+   59  vim nginxxxx.yaml 
+   60  kubectl apply -f nginxxxx.yaml 
+   61  vim nginxxxx.yaml 
+   62  kubectl apply -f nginxxxx.yaml 
+   63  history
+   64  vim nginxxxx.yaml 
+   65  kubectl delete -f nginxxxx.yaml 
+   66  kubectl apply -f nginxxxx.yaml 
+   67  vim nginxxxx.yaml 
+   68  kubectl apply -f nginxxxx.yaml 
+   69  cd ckad/
+   70  vim sidecar.yaml 
+   71  kubectl apply -f sidecar.yaml 
+   72  kubectl get pods
+   73  kubectl exec -it sidecar-pod -c sidecar -- /bin/bash
+   74  kubectl apply -f sidecar.yaml 
+   75  vim sidecar.yaml 
+   76  vim morevolumes.yaml 
+   77  vim init-example1.yaml 
+   78  kubectl create -f init-example1.yaml 
+   79  kubectl get pods
+   80  vim init-example2.yaml 
+   81  kubectl apply -f init-example2.yaml 
+   82  kubectl get pods
+   83  kubectl get ns
+   84  kubectl get pods -n kube-system 
+   85  kubectl get pods -n kubernetes-dashboard 
+   86  kubectl describe ns default 
+   87  kubectl get pods
+   88  kubectl get pods -A
+   89  kubectl create ns secret
+   90  kubectl config set-context --current --namespace=secret
+   91  kubectl get pods
+   92  kubectl run busybox --image=busybox -n secret
+   93  kubectl get pods
+   94  vim busybox-ns.yaml 
+   95  kubectl create -f busybox-ns.yaml 
+   96  kubectl get pods
+   97  kubectl describe pod busybox
+   98  kubectl delete pod busybox
+   99  kubectl run busybox --image=busybox -n secret -- sleep 3600
+  100  kubectl get pods
+  101  kubectl config set-context --current --namespace=default
+  102  kubectl run nginx-lab --image=nginx
+  103  kubectl get pods
+  104  k get pods
+  105  ./countdown 12
+  106  kubectl run faildb --image=mariadb
+  107  kubectl get pods
+  108  kubectl describe pod init-demo2 
+  109  kubectl describe pod faildb 
+  110  kubectl logs faildb 
+  111  kubectl delete pod faildb
+  112  kubectl run -h | less
+  113  kubectl run mydb --image=mariadb --env=MARIADB_ROOT_PASSWORD=password
+  114  kubectl get pods
+  115  kubectl exec mydb -- set
+  116  kubectl exec mydb -- env
+  117  kubectl run busybox
+  118  kubectl run busybox --image=busbox
+  119  kubectl get pods
+  120  kubectl describe pod busybox 
+  121  kubectl get pods
+  122  kubectl delete pod busybox 
+  123  kubectl run busybox --image=busybox
+  124  kubectl get pods
+  125  kubectl describe pod busybox 
+  126  minikube ssh
+  127  kubectl get pods
+  128  kubectl delete pod busybox 
+  129  history
+  130  kubectl explain pod.spec | less
+  131  kubectl explain pod.spec.securityContext | less
+  132  vim securitycontextdemo2.yaml 
+  133  kubectl apply -f securitycontextdemo2.yaml 
+  134  kubectl exec -it security-context-demo -- sh
+  135  vim securitycontextdemo.yaml 
+  136  kubectl create -f securitycontextdemo.yaml 
+  137  kubectl get pods
+  138  kubectl describe pod nginxsecure 
+  139  kubectl delete -f securitycontextdemo.yaml 
+  140  kubectl create job -h | less
+  141  kubectl create job onejob --image=busybox -- date
+  142  kubectl get pods,jobs
+  143  kubectl get jobs onejob -o yaml | less
+  144  kubectl get pods,jobs
+  145  kubectl delete job onejob
+  146  kubectl get pods,jobs
+  147  kubectl create job mynewjob --image=busybox --dry-run=client -o yaml -- sleep 5 > mynewjob.yaml
+  148  vim mynewjob.yaml 
+  149  kubectl create -f mynewjob.yaml 
+  150  vim mynewjob.yaml 
+  151  kubectl create -f mynewjob.yaml 
+  152  kubectl get pods,jobs
+  153  history

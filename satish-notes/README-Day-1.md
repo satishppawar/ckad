@@ -372,5 +372,22 @@ kubectl exec security-context-demo -it -- sh
 
 ## Managing Jobs
 
-- Pods are normally created to run forever
-- 
+- Pods are normally created to run forever. And Pod has a restart policy that is by default set to "restart". That means if pod stops then it will always restart
+- If we need to create a Pod that runs up to the completion we can use **Job**.
+- Jobs are not automatically removed after completion. In order to clean those, `spec.ttlSecondsAfterFinished`.
+
+### Job type
+
+- Depending on `completions` and `parallelism`, there are 3 different types of jobs
+
+1. Non parallel jobs - one pod started unless the pod fails
+- compeletions=1
+- parallelism=1
+
+2. Parallel jobs with fixed completion count - the job is complete after successfully running as many as specified in jobs.spec.completions
+
+3. Parallel jobs with a work queue - multiple jobs are started, when one completes successfully , the job is complete.
+
+- kubectl  create job mynewjob --image=busybox --dry-run=client -o yaml -- sleep 5 > mynewjob.yaml
+- vi mynewjob.yaml
+
