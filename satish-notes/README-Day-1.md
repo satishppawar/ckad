@@ -88,7 +88,7 @@ minikube dashboard
 
 ----
 #### Overview of Kube config file
-- Kube cofig allows us to run everything in K8s cluster
+- Kube config allows us to run everything in K8s cluster
 
 `cat ~/.kube/config`
 OR
@@ -122,7 +122,7 @@ kubectl -h | less
 ### Kubernetes Create Deployment
 
 ```bash
-kubectl create deploy firtnginx --image=nginx --replicas=3
+kubectl create deploy firstnginx --image=nginx --replicas=3
 ```
 
 * test

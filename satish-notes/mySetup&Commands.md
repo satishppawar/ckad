@@ -34,7 +34,7 @@ kubectl get all
 kubectl get pods -A
 docker ps
 minikube dashboard
-kubectl create deploy firtnginx --image=nginx --replicas=3
+kubectl create deploy firstnginx --image=nginx --replicas=3
 kubectl get all
 
 ---
